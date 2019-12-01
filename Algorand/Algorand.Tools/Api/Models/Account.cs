@@ -2,7 +2,7 @@
 
 namespace Algorand.Tools.Api.Models
 {
-    public class AccountInformation
+    public class Account
     {
         [JsonPropertyName("address")]
         public string Address { get; set; }

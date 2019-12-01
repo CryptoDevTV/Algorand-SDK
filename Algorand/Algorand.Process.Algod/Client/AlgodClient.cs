@@ -2,6 +2,7 @@
 using Algorand.Tools.Api.Models;
 using Algorand.Tools.Api.Response;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Algorand.Process.Algod.Client
@@ -38,17 +39,59 @@ namespace Algorand.Process.Algod.Client
         #endregion
 
         #region Account
-        public async Task<ResponseBase<AccountInformation>> GetAccountInformationAsync(string address)
+        public async Task<ResponseBase<Account>> GetAccountInformationAsync(string address)
         {
             try
             {
-                var model = await _apiClient.GetAsync<AccountInformation>($"{ApiVersion}/account/{address}");
+                var model = await _apiClient.GetAsync<Account>($"{ApiVersion}/account/{address}");
 
-                return ResponseBase<AccountInformation>.Success(model);
+                return ResponseBase<Account>.Success(model);
             }
             catch (Exception ex)
             {
-                return ResponseBase<AccountInformation>.Error(null, FormatError(ex));
+                return ResponseBase<Account>.Error(null, FormatError(ex));
+            }
+        }
+
+        public async Task<ResponseBase<Transaction>> GetTransactionInformationAsync(string address, string txId)
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<Transaction>($"{ApiVersion}/account/{address}/transaction/{txId}");
+
+                return ResponseBase<Transaction>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<Transaction>.Error(null, FormatError(ex));
+            }
+        }
+
+        public async Task<ResponseBase<List<Transaction>>> GetTransactionsAsync(string address)
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<List<Transaction>>($"{ApiVersion}/account/{address}/transactions");
+
+                return ResponseBase<List<Transaction>>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<List<Transaction>>.Error(null, FormatError(ex));
+            }
+        }
+
+        public async Task<ResponseBase<List<Transaction>>> GetTransactionsPendingAsync(string address)
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<List<Transaction>>($"{ApiVersion}/account/{address}/transactions/pending");
+
+                return ResponseBase<List<Transaction>>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<List<Transaction>>.Error(null, FormatError(ex));
             }
         }
         #endregion
