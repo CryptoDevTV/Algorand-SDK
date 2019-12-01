@@ -13,7 +13,7 @@ namespace Algorand.Test.Client.Cli
 
             var algod = new AlgodClient(algoapi);
 
-            var addre = algod.GetTransactionsPendingAsync("XXVIIAQBPZLX4IABY2TRLKXEMYQKDSTUKUY37DHTFRQ764XH4VXHV3ITNI").Result;
+            var addre = algod.GetTransactionsPendingAsync("LHHQJ6UMXRGEPXBVFKT7SY26BQOIK64VVPCLVRL3RNQLX5ZMBYG6ZHZMBE").Result;
 
             Console.ReadLine();
         }

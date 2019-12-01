@@ -2,7 +2,6 @@
 using Algorand.Tools.Api.Models;
 using Algorand.Tools.Api.Response;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Algorand.Process.Algod.Client
@@ -67,31 +66,31 @@ namespace Algorand.Process.Algod.Client
             }
         }
 
-        public async Task<ResponseBase<List<Transaction>>> GetTransactionsAsync(string address)
+        public async Task<ResponseBase<TransactionRoot>> GetTransactionsAsync(string address)
         {
             try
             {
-                var model = await _apiClient.GetAsync<List<Transaction>>($"{ApiVersion}/account/{address}/transactions");
+                var model = await _apiClient.GetAsync<TransactionRoot>($"{ApiVersion}/account/{address}/transactions");
 
-                return ResponseBase<List<Transaction>>.Success(model);
+                return ResponseBase<TransactionRoot>.Success(model);
             }
             catch (Exception ex)
             {
-                return ResponseBase<List<Transaction>>.Error(null, FormatError(ex));
+                return ResponseBase<TransactionRoot>.Error(null, FormatError(ex));
             }
         }
 
-        public async Task<ResponseBase<List<Transaction>>> GetTransactionsPendingAsync(string address)
+        public async Task<ResponseBase<TruncatedTransactionRoot>> GetTransactionsPendingAsync(string address)
         {
             try
             {
-                var model = await _apiClient.GetAsync<List<Transaction>>($"{ApiVersion}/account/{address}/transactions/pending");
+                var model = await _apiClient.GetAsync<TruncatedTransactionRoot>($"{ApiVersion}/account/{address}/transactions/pending");
 
-                return ResponseBase<List<Transaction>>.Success(model);
+                return ResponseBase<TruncatedTransactionRoot>.Success(model);
             }
             catch (Exception ex)
             {
-                return ResponseBase<List<Transaction>>.Error(null, FormatError(ex));
+                return ResponseBase<TruncatedTransactionRoot>.Error(null, FormatError(ex));
             }
         }
         #endregion

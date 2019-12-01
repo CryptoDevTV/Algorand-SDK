@@ -32,7 +32,7 @@ namespace Algorand.Tools.Api.Models
         public int LastRound { get; set; }
 
         [JsonPropertyName("noteb64")]
-        public string Noteb64 { get; set; }
+        public object Noteb64 { get; set; }
 
         [JsonPropertyName("round")]
         public int Round { get; set; }

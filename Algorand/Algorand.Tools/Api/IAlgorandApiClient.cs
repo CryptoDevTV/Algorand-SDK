@@ -33,9 +33,7 @@ namespace Algorand.Tools.Api
 
         public async Task<T> GetAsync<T>(string requestUri)
         {
-            var uri = new Uri(_hostAddress, $"{requestUri}");
-
-            var response = await _client.GetAsync(uri);
+            var response = await _client.GetAsync($"{_hostAddress}/{requestUri}");
 
             if (!response.IsSuccessStatusCode)
             {
