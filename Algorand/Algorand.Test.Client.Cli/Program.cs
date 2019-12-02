@@ -8,12 +8,12 @@ namespace Algorand.Test.Client.Cli
     {
         static void Main(string[] args)
         {
-            var algoapi = new AlgorandApiClient("https://testnet-algorand.api.purestake.io/ps1");
-            algoapi.SetApiKey("X-API-Key", "");
+            var algoApi = new AlgorandApiClient("https://testnet-algorand.api.purestake.io/ps1");
+            algoApi.SetApiKey("X-API-Key", "");
 
-            var algod = new AlgodClient(algoapi);
+            var algod = new AlgodClient(algoApi);
 
-            var addre = algod.GetTransactionsPendingAsync("LHHQJ6UMXRGEPXBVFKT7SY26BQOIK64VVPCLVRL3RNQLX5ZMBYG6ZHZMBE").Result;
+            var addre = algod.GetAccountInformationAsync("LHHQJ6UMXRGEPXBVFKT7SY26BQOIK64VVPCLVRL3RNQLX5ZMBYG6ZHZMBE").Result;
 
             Console.ReadLine();
         }
