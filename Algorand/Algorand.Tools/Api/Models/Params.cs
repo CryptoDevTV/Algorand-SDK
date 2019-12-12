@@ -29,7 +29,7 @@ namespace Algorand.Tools.Api.Models
         public string Reserveaddr { get; set; }
 
         [JsonPropertyName("total")]
-        public int Total { get; set; }
+        public long Total { get; set; }
 
         [JsonPropertyName("unitname")]
         public string Unitname { get; set; }

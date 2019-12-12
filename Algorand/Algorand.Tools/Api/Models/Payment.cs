@@ -11,15 +11,15 @@ namespace Algorand.Tools.Api.Models
         public string Close { get; set; }
 
         [JsonPropertyName("closeamount")]
-        public int Closeamount { get; set; }
+        public long Closeamount { get; set; }
 
         [JsonPropertyName("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonPropertyName("torewards")]
-        public int Torewards { get; set; }
+        public long Torewards { get; set; }
 
         [JsonPropertyName("closerewards")]
-        public int Closerewards { get; set; }
+        public long Closerewards { get; set; }
     }
 }

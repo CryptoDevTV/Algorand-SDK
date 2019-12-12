@@ -44,7 +44,7 @@ namespace Algorand.Tools.Api.Models
         public Payment Payment { get; set; }
 
         [JsonPropertyName("fromrewards")]
-        public int Fromrewards { get; set; }
+        public long Fromrewards { get; set; }
 
         [JsonPropertyName("genesisID")]
         public string GenesisID { get; set; }

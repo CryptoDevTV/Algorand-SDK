@@ -8,22 +8,22 @@ namespace Algorand.Tools.Api.Models
         public string Address { get; set; }
 
         [JsonPropertyName("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonPropertyName("amountwithoutpendingrewards")]
-        public int Amountwithoutpendingrewards { get; set; }
+        public long Amountwithoutpendingrewards { get; set; }
 
         [JsonPropertyName("participation")]
         public Participation Participation { get; set; }
 
         [JsonPropertyName("pendingrewards")]
-        public int Pendingrewards { get; set; }
+        public long Pendingrewards { get; set; }
 
         [JsonPropertyName("rewards")]
-        public int Rewards { get; set; }
+        public long Rewards { get; set; }
 
         [JsonPropertyName("round")]
-        public int Round { get; set; }
+        public long Round { get; set; }
 
         [JsonPropertyName("status")]
         public string Status { get; set; }

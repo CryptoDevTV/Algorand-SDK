@@ -8,7 +8,7 @@ namespace Algorand.Tools.Api.Models
         public int Id { get; set; }
 
         [JsonPropertyName("amt")]
-        public int Amt { get; set; }
+        public long Amt { get; set; }
 
         [JsonPropertyName("snd")]
         public string Snd { get; set; }
