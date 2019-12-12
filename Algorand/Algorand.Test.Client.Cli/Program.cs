@@ -13,7 +13,7 @@ namespace Algorand.Test.Client.Cli
 
             var algod = new AlgodClient(algoApi);
 
-            var addre = algod.GetAccountInformationAsync("LHHQJ6UMXRGEPXBVFKT7SY26BQOIK64VVPCLVRL3RNQLX5ZMBYG6ZHZMBE").Result;
+            var addre = algod.GetAssetInformationAsync("18419").Result;
 
             Console.ReadLine();
         }

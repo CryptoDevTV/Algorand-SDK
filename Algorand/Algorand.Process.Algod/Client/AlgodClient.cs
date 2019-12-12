@@ -95,6 +95,22 @@ namespace Algorand.Process.Algod.Client
         }
         #endregion
 
+        #region Amount
+        public async Task<ResponseBase<Asset>> GetAssetInformationAsync(string index)
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<Asset>($"{ApiVersion}/asset/{index}");
+
+                return ResponseBase<Asset>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<Asset>.Error(null, FormatError(ex));
+            }
+        }
+        #endregion
+
         private string FormatError(Exception ex)
             => $"Exception: {ex.Message} | StackTrace: {ex.StackTrace}";
     }
