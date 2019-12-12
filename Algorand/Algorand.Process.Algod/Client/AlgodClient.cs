@@ -125,6 +125,22 @@ namespace Algorand.Process.Algod.Client
         }
         #endregion
 
+        #region Block
+        public async Task<ResponseBase<Block>> GetBlockInformationAsync(int round)
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<Block>($"{ApiVersion}/block/{round}");
+
+                return ResponseBase<Block>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<Block>.Error(null, FormatError(ex));
+            }
+        }
+        #endregion
+
         private string FormatError(Exception ex)
             => $"Exception: {ex.Message} | StackTrace: {ex.StackTrace}";
     }
