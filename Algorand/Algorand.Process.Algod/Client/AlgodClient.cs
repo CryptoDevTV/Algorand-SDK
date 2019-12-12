@@ -109,6 +109,20 @@ namespace Algorand.Process.Algod.Client
                 return ResponseBase<Asset>.Error(null, FormatError(ex));
             }
         }
+
+        public async Task<ResponseBase<AssetRoot>> GetAssetListAsync(int max, string index)
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<AssetRoot>($"{ApiVersion}/assets?max={max}&assetIdx={index}");
+
+                return ResponseBase<AssetRoot>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<AssetRoot>.Error(null, FormatError(ex));
+            }
+        }
         #endregion
 
         private string FormatError(Exception ex)
