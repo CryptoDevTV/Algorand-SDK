@@ -141,6 +141,22 @@ namespace Algorand.Process.Algod.Client
         }
         #endregion
 
+        #region Ledger
+        public async Task<ResponseBase<TotalSupply>> GetLedgerSupplyAsync()
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<TotalSupply>($"{ApiVersion}/ledger/supply");
+
+                return ResponseBase<TotalSupply>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<TotalSupply>.Error(null, FormatError(ex));
+            }
+        }
+        #endregion
+
         private string FormatError(Exception ex)
             => $"Exception: {ex.Message} | StackTrace: {ex.StackTrace}";
     }
