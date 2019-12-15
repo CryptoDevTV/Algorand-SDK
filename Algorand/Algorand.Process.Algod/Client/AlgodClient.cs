@@ -187,6 +187,22 @@ namespace Algorand.Process.Algod.Client
         }
         #endregion
 
+        #region Version
+        public async Task<ResponseBase<VersionRoot>> GetVersionAsync()
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<VersionRoot>($"versions");
+
+                return ResponseBase<VersionRoot>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<VersionRoot>.Error(null, FormatError(ex));
+            }
+        }
+        #endregion
+
         private string FormatError(Exception ex)
             => $"Exception: {ex.Message} | StackTrace: {ex.StackTrace}";
     }
