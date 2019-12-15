@@ -13,7 +13,7 @@ namespace Algorand.Test.Client.Cli
 
             var algod = new AlgodClient(algoApi);
 
-            var addre = algod.GetLedgerSupplyAsync().Result;
+            var addre = algod.GetNodeStatusAfterRoundAsync(102).Result;
 
             Console.ReadLine();
         }

@@ -157,6 +157,36 @@ namespace Algorand.Process.Algod.Client
         }
         #endregion
 
+        #region Status
+        public async Task<ResponseBase<NodeStatus>> GetNodeStatusAsync()
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<NodeStatus>($"{ApiVersion}/status");
+
+                return ResponseBase<NodeStatus>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<NodeStatus>.Error(null, FormatError(ex));
+            }
+        }
+
+        public async Task<ResponseBase<NodeStatus>> GetNodeStatusAfterRoundAsync(int round)
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<NodeStatus>($"{ApiVersion}/status/wait-for-block-after/{round}");
+
+                return ResponseBase<NodeStatus>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<NodeStatus>.Error(null, FormatError(ex));
+            }
+        }
+        #endregion
+
         private string FormatError(Exception ex)
             => $"Exception: {ex.Message} | StackTrace: {ex.StackTrace}";
     }
