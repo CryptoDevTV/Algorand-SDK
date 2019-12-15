@@ -187,6 +187,64 @@ namespace Algorand.Process.Algod.Client
         }
         #endregion
 
+        #region Transactions
+        public async Task<ResponseBase<Transaction>> GetSingleTransactionInformationAsync(string txId)
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<Transaction>($"{ApiVersion}/transaction/{txId}");
+
+                return ResponseBase<Transaction>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<Transaction>.Error(null, FormatError(ex));
+            }
+        }
+
+        public async Task<ResponseBase<FeeRoot>> GetSuggestedFeeAsync()
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<FeeRoot>($"{ApiVersion}/transactions/fee");
+
+                return ResponseBase<FeeRoot>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<FeeRoot>.Error(null, FormatError(ex));
+            }
+        }
+
+        public async Task<ResponseBase<TransactionParams>> GetTransactionParamsAsync()
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<TransactionParams>($"{ApiVersion}/transactions/params");
+
+                return ResponseBase<TransactionParams>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<TransactionParams>.Error(null, FormatError(ex));
+            }
+        }
+
+        public async Task<ResponseBase<TruncatedTransactionRoot>> GetUnconfirmedTransactionAsync(string txId)
+        {
+            try
+            {
+                var model = await _apiClient.GetAsync<TruncatedTransactionRoot>($"{ApiVersion}/transactions/pending/{txId}");
+
+                return ResponseBase<TruncatedTransactionRoot>.Success(model);
+            }
+            catch (Exception ex)
+            {
+                return ResponseBase<TruncatedTransactionRoot>.Error(null, FormatError(ex));
+            }
+        }
+        #endregion
+
         #region Version
         public async Task<ResponseBase<VersionRoot>> GetVersionAsync()
         {
