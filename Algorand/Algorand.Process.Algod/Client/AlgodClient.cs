@@ -42,7 +42,7 @@ namespace Algorand.Process.Algod.Client
         {
             try
             {
-                var model = await _apiClient.GetAsync<Account>($"{ApiVersion}/account/{address}");
+                var model = await _apiClient.GetAsync<Account>($"{ApiVersion}/accounts/{address}");
 
                 return ResponseBase<Account>.Success(model);
             }
